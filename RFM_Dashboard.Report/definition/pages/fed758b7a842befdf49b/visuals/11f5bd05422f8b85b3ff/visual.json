@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "11f5bd05422f8b85b3ff",
+  "position": {
+    "x": 640,
+    "y": 20,
+    "z": 2,
+    "height": 110,
+    "width": 290,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Fields": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "Avg Customer Value"
+                }
+              },
+              "queryRef": "[Avg Customer Value]",
+              "nativeQueryRef": "Avg Customer Value"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Avg Customer Value",
+            "fontSize": 10,
+            "bold": false
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

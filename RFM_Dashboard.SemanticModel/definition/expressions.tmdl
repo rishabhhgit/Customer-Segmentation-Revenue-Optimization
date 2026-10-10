@@ -1,0 +1,1 @@
+expression DataFolder = "C:\rfm-customer-segmentation" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

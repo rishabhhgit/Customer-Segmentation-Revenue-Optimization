@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ad325d0575fb00f3f298",
+  "position": {
+    "x": 330,
+    "y": 20,
+    "z": 1,
+    "height": 110,
+    "width": 290,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Fields": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "Total Customers"
+                }
+              },
+              "queryRef": "[Total Customers]",
+              "nativeQueryRef": "Total Customers"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Total Customers",
+            "fontSize": 10,
+            "bold": false
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

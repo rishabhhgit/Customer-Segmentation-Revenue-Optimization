@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "542c75dd1d6b91a76a9c",
+  "position": {
+    "x": 830,
+    "y": 550,
+    "z": 4,
+    "height": 150,
+    "width": 430,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Fields": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "At Risk Customers"
+                }
+              },
+              "queryRef": "[At Risk Customers]",
+              "nativeQueryRef": "At Risk Customers"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "At Risk Customers",
+            "fontSize": 10,
+            "bold": false
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

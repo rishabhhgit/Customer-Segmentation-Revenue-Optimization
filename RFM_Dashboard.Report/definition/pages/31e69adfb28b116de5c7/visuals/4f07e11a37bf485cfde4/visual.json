@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4f07e11a37bf485cfde4",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "height": 680,
+    "width": 780,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "matrix",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CohortRetention"
+                    }
+                  },
+                  "Property": "CohortMonth"
+                }
+              },
+              "queryRef": "CohortRetention.CohortMonth",
+              "nativeQueryRef": "CohortMonth"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CohortRetention"
+                    }
+                  },
+                  "Property": "CohortIndex"
+                }
+              },
+              "queryRef": "CohortRetention.CohortIndex",
+              "nativeQueryRef": "CohortIndex"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CohortRetention"
+                    }
+                  },
+                  "Property": "Avg Retention"
+                }
+              },
+              "queryRef": "[Avg Retention]",
+              "nativeQueryRef": "Avg Retention"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Cohort Retention % by Month Since First Purchase",
+            "fontSize": 12,
+            "bold": true
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

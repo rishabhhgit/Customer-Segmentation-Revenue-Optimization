@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "1ff5842dbfb7f68b65a8",
+  "position": {
+    "x": 830,
+    "y": 190,
+    "z": 2,
+    "height": 330,
+    "width": 430,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CohortRetention"
+                    }
+                  },
+                  "Property": "CohortIndex"
+                }
+              },
+              "queryRef": "CohortRetention.CohortIndex",
+              "nativeQueryRef": "CohortIndex"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CohortRetention"
+                    }
+                  },
+                  "Property": "Avg Retention"
+                }
+              },
+              "queryRef": "[Avg Retention]",
+              "nativeQueryRef": "Avg Retention"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Average Retention by Month Number",
+            "fontSize": 12,
+            "bold": true
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c260c6b4f8f4e75119da",
+  "position": {
+    "x": 20,
+    "y": 380,
+    "z": 2,
+    "height": 320,
+    "width": 780,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "Recency"
+                }
+              },
+              "queryRef": "RFM.Recency",
+              "nativeQueryRef": "Recency"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "Monetary"
+                }
+              },
+              "queryRef": "RFM.Monetary",
+              "nativeQueryRef": "Monetary"
+            }
+          ]
+        },
+        "Legend": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "Segment"
+                }
+              },
+              "queryRef": "RFM.Segment",
+              "nativeQueryRef": "Segment"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Recency vs Monetary by Segment",
+            "fontSize": 12,
+            "bold": true
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

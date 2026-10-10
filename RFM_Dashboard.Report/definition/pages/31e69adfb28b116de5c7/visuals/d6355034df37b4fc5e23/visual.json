@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "d6355034df37b4fc5e23",
+  "position": {
+    "x": 830,
+    "y": 540,
+    "z": 3,
+    "height": 160,
+    "width": 430,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Fields": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RFM"
+                    }
+                  },
+                  "Property": "% of Total Revenue"
+                }
+              },
+              "queryRef": "[% of Total Revenue]",
+              "nativeQueryRef": "% of Total Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": true,
+            "text": "Share of Revenue in View",
+            "fontSize": 10,
+            "bold": false
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

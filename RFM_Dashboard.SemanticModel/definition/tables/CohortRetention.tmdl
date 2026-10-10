@@ -1,0 +1,33 @@
+table CohortRetention
+
+	partition CohortRetention = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(DataFolder & "/cohort_retention_pct.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    Unpivoted = Table.UnpivotOtherColumns(Headers, {"CohortMonth"}, "CohortIndex", "RetentionPct"),
+			    Types = Table.TransformColumnTypes(Unpivoted, {{"CohortMonth", type text}, {"CohortIndex", Int64.Type}, {"RetentionPct", type number}})
+			in
+			    Types
+
+	column CohortMonth
+		dataType: string
+		sourceColumn: CohortMonth
+		summarizeBy: none
+
+	column CohortIndex
+		dataType: int64
+		sourceColumn: CohortIndex
+		summarizeBy: none
+
+	column RetentionPct
+		dataType: double
+		sourceColumn: RetentionPct
+		summarizeBy: none
+
+	measure 'Avg Retention' = AVERAGE(CohortRetention[RetentionPct])
+		formatString: "0\.0\%"
+
+	measure 'Month 1 Retention' = CALCULATE(AVERAGE(CohortRetention[RetentionPct]), CohortRetention[CohortIndex] = 1)
+		formatString: "0\.0\%"

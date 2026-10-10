@@ -1,0 +1,94 @@
+table RFM
+
+	partition RFM = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents(DataFolder & "/rfm_segments.csv"), [Delimiter = ",", Columns = 10, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+			    Types = Table.TransformColumnTypes(Headers, {{"Customer ID", type text}, {"Recency", Int64.Type}, {"Frequency", Int64.Type}, {"Monetary", type number}, {"R_Score", Int64.Type}, {"F_Score", Int64.Type}, {"M_Score", Int64.Type}, {"RFM_Score", type text}, {"RFM_Sum", Int64.Type}, {"Segment", type text}})
+			in
+			    Types
+
+	column 'Customer ID'
+		dataType: string
+		sourceColumn: "Customer ID"
+		summarizeBy: none
+
+	column Recency
+		dataType: int64
+		sourceColumn: Recency
+		summarizeBy: none
+
+	column Frequency
+		dataType: int64
+		sourceColumn: Frequency
+		summarizeBy: none
+
+	column Monetary
+		dataType: double
+		sourceColumn: Monetary
+		summarizeBy: none
+
+	column R_Score
+		dataType: int64
+		sourceColumn: R_Score
+		summarizeBy: none
+
+	column F_Score
+		dataType: int64
+		sourceColumn: F_Score
+		summarizeBy: none
+
+	column M_Score
+		dataType: int64
+		sourceColumn: M_Score
+		summarizeBy: none
+
+	column RFM_Score
+		dataType: string
+		sourceColumn: RFM_Score
+		summarizeBy: none
+
+	column RFM_Sum
+		dataType: int64
+		sourceColumn: RFM_Sum
+		summarizeBy: none
+
+	column Segment
+		dataType: string
+		sourceColumn: Segment
+		summarizeBy: none
+
+	measure 'Total Revenue' = SUM(RFM[Monetary])
+		formatString: "£#,##0"
+
+	measure 'Total Customers' = DISTINCTCOUNT(RFM[Customer ID])
+		formatString: "#,##0"
+
+	measure 'Avg Customer Value' = DIVIDE([Total Revenue], [Total Customers])
+		formatString: "£#,##0"
+
+	measure 'Avg Recency (Days)' = AVERAGEX(RFM, RFM[Recency])
+		formatString: "#,##0"
+
+	measure 'Revenue at Risk' = CALCULATE([Total Revenue], RFM[Segment] = "At Risk")
+		formatString: "£#,##0"
+
+	measure 'Revenue at Risk + Cannot Lose' = CALCULATE([Total Revenue], RFM[Segment] IN {"At Risk", "Cannot Lose Them"})
+		formatString: "£#,##0"
+
+	measure 'At Risk Customers' = CALCULATE([Total Customers], RFM[Segment] = "At Risk")
+		formatString: "#,##0"
+
+	measure '% of Total Revenue' = DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(RFM)))
+		formatString: "0\.0\%"
+
+	measure '% of Total Customers' = DIVIDE([Total Customers], CALCULATE([Total Customers], ALL(RFM)))
+		formatString: "0\.0\%"
+
+	measure 'Champions + Loyal Revenue %' = DIVIDE(CALCULATE([Total Revenue], RFM[Segment] IN {"Champions", "Loyal Customers"}), CALCULATE([Total Revenue], ALL(RFM)))
+		formatString: "0\.0\%"
+
+	measure 'Champions + Loyal Customers %' = DIVIDE(CALCULATE([Total Customers], RFM[Segment] IN {"Champions", "Loyal Customers"}), CALCULATE([Total Customers], ALL(RFM)))
+		formatString: "0\.0\%"
