@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RFM"
+                      "Entity": "CohortRetention"
                     }
                   },
-                  "Property": "% of Total Revenue"
+                  "Property": "Avg Retention"
                 }
               },
-              "queryRef": "[% of Total Revenue]",
-              "nativeQueryRef": "% of Total Revenue"
+              "queryRef": "[Avg Retention]",
+              "nativeQueryRef": "Avg Retention"
             }
           ]
         }
@@ -38,7 +38,7 @@
         {
           "properties": {
             "show": true,
-            "text": "Share of Revenue in View",
+            "text": "Average Retention (all months)",
             "fontSize": 10,
             "bold": false
           }

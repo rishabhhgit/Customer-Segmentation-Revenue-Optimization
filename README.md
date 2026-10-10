@@ -46,13 +46,16 @@ concentration. Built using Python, SQL, and Power BI.
 - `04_visualization.ipynb` — exploratory visualizations (segment revenue share, recency vs monetary, RF heatmap)
 - `05_cohort_analysis.ipynb` — monthly cohort retention matrix, heatmap, and revenue retention
 - `rfm_segments.csv` — full customer-level RFM dataset (Power BI data source)
-- `cohort_retention_pct.csv`, `cohort_counts.csv` — cohort retention tables (Power BI data source)
+- `cohort_retention_pct.csv`, `cohort_counts.csv` — cohort retention tables
+  (`cohort_retention_pct.csv` is the Power BI data source)
+- `online_retail_II.xlsx` — raw source dataset (Online Retail II, UCI)
 - `RFM_Dashboard.pbip` — Power BI Project (semantic model + interactive report, see below)
-- `dashboard.png` — Power BI dashboard screenshot
+- `dashboard_overview.png`, `dashboard_segments.png`, `dashboard_retention.png` —
+  dashboard page previews
 
 > Raw dataset: [Online Retail II, UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
-> (not included here due to file size — `01_Data_Cleaning.ipynb` loads `online_retail_II.xlsx`
-> from the project folder or a local download location and reproduces the cleaning steps)
+> (included in this repo as `online_retail_II.xlsx`; `01_Data_Cleaning.ipynb` loads it from
+> the project folder and reproduces the cleaning steps)
 
 ## Dashboard
 Interactive Power BI dashboard monitoring customer segments, revenue contribution, the
@@ -65,13 +68,16 @@ PBIR report definition) that Power BI Desktop opens natively and source-control 
    risk), segment revenue share, customers by segment, and a filtered win-back table
    (At Risk + Cannot Lose Them customers ranked by spend)
 2. **Segments** — customers and revenue per segment, recency vs monetary scatter by
-   segment, and Champions+Loyal revenue-share / At Risk customer-count cards
+   segment, plus cards for Champions + Loyal share of customers (46.0%), Champions +
+   Loyal share of revenue (83.7%), and At Risk customer count (353)
 3. **Retention Trends** — cohort retention matrix (month-since-first-purchase ×
-   acquisition cohort), average retention curve, and month-1 retention card
+   acquisition cohort), average retention curve, month-1 retention card (21.2%), and
+   overall average-retention card (24.7%)
 
 **Semantic model** — `RFM` and `CohortRetention` tables loaded from the CSVs via
-Power Query, with 13 DAX measures (`Total Revenue`, `Revenue at Risk`,
-`Champions + Loyal Revenue %`, `Month 1 Retention`, etc.).
+Power Query, with 13 DAX measures (`Total Revenue`, `Revenue at Risk`, `Total Customers`,
+`Champions + Loyal Revenue %`, `Champions + Loyal Customers %`, `Month 1 Retention`,
+`Avg Retention`, etc.).
 
 **To produce the `.pbix`** (Power BI Desktop on Windows — the pbix binary format is
 only authorable in Desktop):
@@ -82,7 +88,20 @@ only authorable in Desktop):
    `rfm_segments.csv` (default `C:\rfm-customer-segmentation`), then **Close & Apply**
 4. **File → Save As → Power BI (.pbix)**
 
-![Power BI Dashboard](dashboard.png)
+Page previews (rendered from the report definition against the same CSVs the model loads;
+the `.pbip` above opens as the live, interactive report in Power BI Desktop):
+
+**Overview**
+
+![Overview](dashboard_overview.png)
+
+**Segments**
+
+![Segments](dashboard_segments.png)
+
+**Retention Trends**
+
+![Retention Trends](dashboard_retention.png)
 
 ## Recommendation
 Prioritize a targeted win-back campaign for the 353 "At Risk" customers (£1.09M in

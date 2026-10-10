@@ -82,13 +82,13 @@ table RFM
 		formatString: "#,##0"
 
 	measure '% of Total Revenue' = DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(RFM)))
-		formatString: "0\.0\%"
+		formatString: "0.0%"
 
 	measure '% of Total Customers' = DIVIDE([Total Customers], CALCULATE([Total Customers], ALL(RFM)))
-		formatString: "0\.0\%"
+		formatString: "0.0%"
 
 	measure 'Champions + Loyal Revenue %' = DIVIDE(CALCULATE([Total Revenue], RFM[Segment] IN {"Champions", "Loyal Customers"}), CALCULATE([Total Revenue], ALL(RFM)))
-		formatString: "0\.0\%"
+		formatString: "0.0%"
 
 	measure 'Champions + Loyal Customers %' = DIVIDE(CALCULATE([Total Customers], RFM[Segment] IN {"Champions", "Loyal Customers"}), CALCULATE([Total Customers], ALL(RFM)))
-		formatString: "0\.0\%"
+		formatString: "0.0%"

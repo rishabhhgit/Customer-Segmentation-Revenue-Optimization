@@ -23,11 +23,11 @@
                       "Entity": "RFM"
                     }
                   },
-                  "Property": "Revenue at Risk + Cannot Lose"
+                  "Property": "Revenue at Risk"
                 }
               },
-              "queryRef": "[Revenue at Risk + Cannot Lose]",
-              "nativeQueryRef": "Revenue at Risk + Cannot Lose"
+              "queryRef": "[Revenue at Risk]",
+              "nativeQueryRef": "Revenue at Risk"
             }
           ]
         }
