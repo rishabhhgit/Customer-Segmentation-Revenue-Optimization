@@ -109,15 +109,6 @@ Power Query, with 13 DAX measures (`Total Revenue`, `Revenue at Risk`, `Total Cu
 `Champions + Loyal Revenue %`, `Champions + Loyal Customers %`, `Month 1 Retention`,
 `Avg Retention`, etc.).
 
-**To produce the `.pbix`** (Power BI Desktop on Windows — the pbix binary format is
-only authorable in Desktop):
-1. Copy this project to a Windows machine
-2. Open `RFM_Dashboard.pbip` in Power BI Desktop (enable the *Power BI project (PBIP)
-   save* option under Options if prompted)
-3. When Power Query opens, set the `DataFolder` parameter to the folder containing
-   `rfm_segments.csv` (default `C:\rfm-customer-segmentation`), then **Close & Apply**
-4. **File → Save As → Power BI (.pbix)**
-
 Page previews (rendered from the report definition against the same CSVs the model loads;
 the `.pbip` above opens as the live, interactive report in Power BI Desktop):
 
