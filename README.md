@@ -39,6 +39,36 @@ concentration. Built using Python, SQL, and Power BI.
   at month 1 vs ~15–19% for mid-2010 cohorts, and revenue retention (~21% at M1) tracks
   customer retention closely.
 
+## Analysis
+
+**Revenue is concentrated in the top two segments** — Champions and Loyal Customers hold
+46% of customers and 83.7% of revenue, while the bottom four segments together account
+for under 7%.
+
+![Segment revenue share](chart1_segment_revenue_share.png)
+
+**Customer base is broad, revenue is not** — segment sizes are far more evenly spread than
+the revenue they produce, which is the Pareto pattern behind the retention recommendation.
+
+![Segment sizes](chart2_segment_sizes.png)
+
+**Spend is driven by a small high-value tail** — most customers cluster at low monetary
+values, with a thin scatter of high-spend Champions. At Risk customers sit further right
+on recency, confirming they were valuable before they went quiet.
+
+![Recency vs monetary](chart3_recency_vs_monetary.png)
+
+**Recency and frequency move together** — the strongest cells sit in the high-recency,
+high-frequency corner (Champions/Loyal), while low recency with low frequency maps to
+Lost and Hibernating.
+
+![Recency vs frequency heatmap](chart4_rf_heatmap.png)
+
+**Cohort retention leaks in month one** — every cohort drops to ~21% by the second month,
+then plateaus. The early Dec 2009 cohort holds materially better than mid-2010 cohorts.
+
+![Cohort retention heatmap](chart5_cohort_retention.png)
+
 ## Files
 - `01_Data_Cleaning.ipynb` — data cleaning (removes cancelled orders, missing customer IDs, duplicates)
 - `02_rfm_analysis.ipynb` — RFM calculation, scoring, and segmentation logic
